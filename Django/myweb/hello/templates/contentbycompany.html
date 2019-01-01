@@ -1,0 +1,142 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Homepage
+{% endblock %}
+
+{% block style %}
+<style>
+.container{
+    text-align: center;
+    vertical-align:middle;
+}
+.container a{
+    width: 285px;
+    height: 204px;
+    float: left; 
+    margin: 10px;
+    padding: 70px;
+    border: 1px solid #ccc;
+    text-align: center;
+  
+  }
+
+  .container:hover a{
+    text-align: center;
+    color: #fff;
+  
+  }
+  
+  /*Fade all the DIV when user hovers on any div*/
+  .container:hover a{
+    zoom: 1;
+    filter: alpha(opacity=45);
+    opacity: 0.45;
+    -webkit-transition: opacity .5s ease-in-out;
+    -moz-transition: opacity .5s ease-in-out;
+    -ms-transition: opacity .5s ease-in-out;
+    -o-transition: opacity .5s ease-in-out;
+    transition: opacity .5s ease-in-out;
+  }
+  
+  /*Fade out the particular DIV when user hover on that DIV*/
+  .container a:hover{
+    box-shadow: 3px 3px 15px #666;
+    border-color:#F05F3B;
+    background: #F05F3B;
+    color: #fff;
+    cursor: pointer;
+    
+    /*Opacity*/
+    zoom: 1;
+    filter: alpha(opacity=100);
+    opacity: 1;
+  }
+  /*header styling */
+
+  .header {
+  overflow: hidden;
+  padding-top: 25px;
+  padding: 10px 10px;
+  border: 2px solid #73AD21;
+  border-radius: 25px;
+}
+
+.header a {
+  float: left;
+  color: navy;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 20px; 
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+.header a.logo {
+  font-size: 20px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.header a:hover {
+  color: navy;
+  text-decoration: none;
+}
+
+
+.header a.active {
+  color: Black;
+  text-decoration: underline; 
+}
+
+.header-right {
+  float: right;
+}
+
+.heading-second{
+    padding-left:100px;
+    padding-top:20px;
+    color: black;
+}
+.heading-second a {
+    text-decoration: none;
+    color: Black;
+}
+
+.heading-second a.active {
+    text-decoration: none; 
+    color: Balck;
+}
+
+.heading-second a:hover {
+    color: Black;
+  text-decoration: none;
+}
+</style>
+
+  {% endblock %}
+
+  {% block body %}
+        
+        <div class="heading-second">
+        <h4>
+            
+        <a href="{% url 'index' %}" class="btn btn-link">
+                Topics</a>
+        <a href="{% url 'contentbycompany' %}" class="btn btn-danger">
+        Company</a></h4>
+        </div>
+        <br>
+        <br>
+        
+            <div class="container"> 
+        {% for company in companies %}
+            <a href="{% url 'companycategories' company.id %}">
+                {{company.name}}
+            </a>
+        {% endfor %}
+        </div>
+
+        
+        {% endblock %}

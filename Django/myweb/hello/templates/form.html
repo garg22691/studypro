@@ -1,0 +1,8 @@
+<h2>Add a Review</h2>
+        <form action="/book" method="post">
+            {% csrf_token %}
+            name: <input type="text" name="name" value="name"><br>
+            company: <input type="text" name="company" value="company"><br>
+            Review: <input type="text" name="review" value="123"><br>
+            <input type="submit" value="Add review" />
+        </form>
